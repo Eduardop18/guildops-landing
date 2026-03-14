@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* GuildOPS Color Palette - Sci-fi Command Center */
+  --navy-deep: #0A0E1A;
+  --purple-dark: #1A1040;
+  --purple-mid: #2D1B69;
+  --gold-amber: #F0A500;
+  --gold-light: #FFD700;
+  --violet-accent: #8B5CF6;
+  --violet-glow: #A78BFA;
+  --text-light: #E2E8F0;
+  --text-muted: #94A3B8;
+  
+  --background: 225 47% 7%;
+  --foreground: 214 32% 91%;
+  --card: 256 60% 15%;
+  --card-foreground: 214 32% 91%;
+  --popover: 256 60% 12%;
+  --popover-foreground: 214 32% 91%;
+  --primary: 39 100% 47%;
+  --primary-foreground: 225 47% 7%;
+  --secondary: 263 70% 50%;
+  --secondary-foreground: 214 32% 91%;
+  --muted: 256 30% 20%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 263 70% 50%;
+  --accent-foreground: 214 32% 91%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 214 32% 91%;
+  --border: 256 30% 25%;
+  --input: 256 30% 20%;
+  --ring: 39 100% 47%;
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy-deep);
+  color: var(--text-light);
+  font-family: 'Exo 2', sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+[data-hydration-error] {
+  display: none !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animated Background */
+.bg-mesh {
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(240, 165, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(26, 16, 64, 0.8) 0%, transparent 70%),
+    var(--navy-deep);
+}
+
+/* Particle Stars Animation */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--gold-amber);
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(26, 16, 64, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(45, 27, 105, 0.6) 0%, rgba(26, 16, 64, 0.4) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--gold-amber);
+  box-shadow: 0 0 30px rgba(240, 165, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+@layer utilities {
+  /* Text Gradients */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--gold-amber) 0%, var(--gold-light) 50%, var(--gold-amber) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-purple {
+    background: linear-gradient(135deg, var(--violet-accent) 0%, var(--violet-glow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-purple-gold {
+    background: linear-gradient(135deg, var(--violet-accent) 0%, var(--gold-amber) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Background Gradients */
+  .bg-gradient-purple-gold {
+    background: linear-gradient(135deg, var(--violet-accent) 0%, var(--gold-amber) 100%);
+  }
+  
+  .bg-gradient-dark {
+    background: linear-gradient(180deg, var(--navy-deep) 0%, var(--purple-dark) 100%);
+  }
+  
+  /* Glow Effects */
+  .glow-gold {
+    box-shadow: 0 0 30px rgba(240, 165, 0, 0.4), 0 0 60px rgba(240, 165, 0, 0.2);
+  }
+  
+  .glow-purple {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.2);
+  }
+  
+  .glow-text-gold {
+    text-shadow: 0 0 20px rgba(240, 165, 0, 0.6), 0 0 40px rgba(240, 165, 0, 0.3);
+  }
+  
+  .glow-text-purple {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 40px rgba(139, 92, 246, 0.3);
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-amber) 0%, #D4940A 100%);
+    color: var(--navy-deep);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(240, 165, 0, 0.5), 0 0 60px rgba(240, 165, 0, 0.3);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid var(--violet-accent);
+    color: var(--text-light);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--violet-accent);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  /* Scroll Reveal Animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  
+  /* Counter Animation */
+  .counter {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+  }
+  
+  /* Noise Texture */
+  .noise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='https://upload.wikimedia.org/wikipedia/commons/0/03/FractalNoise2Dfabsf.png id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
